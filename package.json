@@ -1,0 +1,25 @@
+{
+  "name": "proyectofinalredes",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "node app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/capcaz99/proyectoFinalRedes.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/capcaz99/proyectoFinalRedes/issues"
+  },
+  "homepage": "https://github.com/capcaz99/proyectoFinalRedes#readme",
+  "dependencies": {
+    "ejs": "^2.5.7",
+    "express": "^4.16.2",
+    "http": "0.0.0",
+    "request": "^2.83.0"
+  }
+}
