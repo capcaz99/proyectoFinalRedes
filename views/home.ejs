@@ -83,8 +83,10 @@
     var estadoSiguiente;
     if($(".onoffswitch-checkbox").prop('checked') === true){
         estadoSiguiente = 0;
+        $(".btn-success").prop('disabled', false);
     }else{
         estadoSiguiente = 1;
+        $(".btn-success").prop('disabled', true);
     }
     document.getElementById('switchForm').action = "/switch/<%=val%>/<%=text%>/"+estadoSiguiente;
     document.getElementById('temp').action = "/temperature/"+estadoSiguiente;
