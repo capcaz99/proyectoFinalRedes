@@ -2,16 +2,96 @@
 <html>
 <head>
 	<title>IOT</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://proyectofinalredes-capcaz99.c9users.io/general.css">
 </head>
 
 <body>
-    <form method="POST" action="/temperature">
-        <button>Obtener Temperatura</button>
-    </form>
-    <form method="POST" action="/humidity">
-        <button>Obtener humedad</button>
-    </form>
-    <textarea rows="1" cols="15"><%=text%><%= val %></textarea>
+    <nav class="navbar navbar-light bg-light color">
+        <a class="navbar-brand" href="#">
+            
+            Proyecto Final Redes
+        </a>
+    </nav>
+    <div class="move">
+        <div class="container">
+            <div class="jumbotron center">
+            
+            <div class="row">
+                <div class="cl-sm-3">
+                    <h1 class="noPadd">Laboratorio de química</h1>
+                </div>    
+                <div class="cl-sm-3" id="align">
+                    <div class="onoffswitch">
+
+                        <form method="POST"  id="switchForm">
+                             <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="myonoffswitch" <%=check%>>
+                             <label class="onoffswitch-label" for="myonoffswitch">
+                             <span class="onoffswitch-inner"></span>
+                             <span class="onoffswitch-switch"></span>
+                        </label>
+                        </form> 
+                        <script type="text/javascript">  
+                            $(function(){
+                             $('.onoffswitch-checkbox').on('change',function(){
+                                $('#switchForm').submit();
+                                });
+                            });
+                        </script>
+                        
+                    </div>
+                </div>    
+                <div class="cl-sm-3"></div>    
+                <div class="cl-sm-3"></div>    
+            </div>
+    
+                <div class="row padd">
+                    <div class="col-sm-3"></div>
+                    <div class="col-sm-3">
+                        <form id="temp" method="POST">
+                            <button class="btn btn-success">Obtener Temperatura</button>
+                        </form>
+                        
+                        
+                    </div>
+                    <div class="col-sm-3">
+                        <form id="hum" method="POST">
+                            <button class="btn btn-success">Obtener humedad</button>
+                        </form>
+                    </div>
+                    <div class="col-sm-3"></div>
+                </div>
+                
+                <div class="row">
+                    <div class="col-sm-4"></div>
+                    <div class="col-sm-4 textBox">
+                        <textarea class="text" rows="1" cols="15"><%=text%><%= val %></textarea>
+                    </div>
+                    <div class="col-sm-4"></div>
+                    
+                </div>
+                
+            </div>
+        </div>
+    </div>
+    
+  <script>
+    var estadoSiguiente;
+    if($(".onoffswitch-checkbox").prop('checked') === true){
+        estadoSiguiente = 0;
+    }else{
+        estadoSiguiente = 1;
+    }
+    document.getElementById('switchForm').action = "/switch/<%=val%>/<%=text%>/"+estadoSiguiente;
+    document.getElementById('temp').action = "/temperature/"+estadoSiguiente;
+    document.getElementById('hum').action = "/humidity/"+estadoSiguiente;
+    
+</script>   
+ 
 </body>
 
 </html>
